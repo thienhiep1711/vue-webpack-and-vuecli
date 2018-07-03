@@ -9,21 +9,8 @@
         </div>
          <div class="col-sm-9">
            <div class="main-box">
-             <!-- <app-user></app-user> -->
-             <div class="text-center">
-               <button class="btn btn-success" @click="selectedComponent = 'appQuote'">News</button>
-               <button class="btn btn-warning"  @click="selectedComponent = 'quoteAuthor'">Author</button>
-               <button class="btn btn-primary"  @click="selectedComponent = 'quoteNew'">Quote</button>
-             </div>
-             <p>{{selectedComponent}}</p>
-             <component :is="selectedComponent">
-               <p>Default Content</p>
-             </component>
-             <!-- <app-quote :quote="'Hiep This is wonderful quote'">
-               <h2 slot="title">{{quoteTitle}}</h2>
-              <p slot="content">Nguyen Hiep recomentdation </p>
-             </app-quote> -->
-        <!-- <app-servers></app-servers> -->
+             <app-new-quote @quoteAdded="newQuote"></app-new-quote>
+             <app-quote-grid :quotes="quotes" @quoteDeleted="deleteQuote"></app-quote-grid>
            </div>
       </div>
       </div>
@@ -38,31 +25,37 @@
   import Header from './components/Shared/Header';
   import Footer from './components/Shared/Footer';
   import Sidebar from './components/Sidebar/Sidebar';
-  import User from './components/Users/User';
-  import ServerStatus from './components/Server/ServerStatus';
-  import Quote from './components/Quote/Quote.vue';
 
-  import Author from './components/Quote/Author.vue';
-  import New from './components/Quote/New.vue';
+  import QuoteGird from './components/Quote/QuoteGird.vue';
+  import NewQuote from './components/Quote/NewQuote.vue';
 
   import './assets/css/bootstrap.min.css';
   import './assets/css/styles.scss';
   export default {
     data: function() {
       return {
-        quoteTitle:"The Quote",
-        selectedComponent:'appQuote'
+         quotes: [
+          'Just a Quote to see something'
+        ],
+        maxQuote:10,
+
       }
     },
     components: {
       'app-header': Header,
       'app-footer': Footer,
       'app-sidebar': Sidebar,
-      'app-user': User,
-      'app-server-status': ServerStatus,
-      'appQuote': Quote,
-      'quoteNew': New,
-      'quoteAuthor' : Author,
+
+      'appQuoteGrid': QuoteGird,
+      'appNewQuote' : NewQuote
+    },
+    methods: {
+      newQuote(quote) {
+        this.quotes.push(quote);
+      },
+      deleteQuote(index) {
+        this.quotes.splice(index, 1);
+      }
     }
   }
 
