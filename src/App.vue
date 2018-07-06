@@ -9,8 +9,7 @@
         </div>
          <div class="col-sm-9">
            <div class="main-box">
-             <app-new-quote @quoteAdded="newQuote"></app-new-quote>
-             <app-quote-grid :quotes="quotes" @quoteDeleted="deleteQuote"></app-quote-grid>
+             <app-profile-form></app-profile-form>
            </div>
       </div>
       </div>
@@ -26,8 +25,7 @@
   import Footer from './components/Shared/Footer';
   import Sidebar from './components/Sidebar/Sidebar';
 
-  import QuoteGird from './components/Quote/QuoteGird.vue';
-  import NewQuote from './components/Quote/NewQuote.vue';
+  import ProfileForm from './components/Forms/ProfileForm.vue';
 
   import './assets/css/bootstrap.min.css';
   import './assets/css/styles.scss';
@@ -46,8 +44,7 @@
       'app-footer': Footer,
       'app-sidebar': Sidebar,
 
-      'appQuoteGrid': QuoteGird,
-      'appNewQuote' : NewQuote
+      'appProfileForm': ProfileForm
     },
     methods: {
       newQuote(quote) {
