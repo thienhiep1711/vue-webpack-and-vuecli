@@ -8,6 +8,12 @@ import ServerStatus from './Server/ServerStatus.vue';
 export default {
   components: {
     'app-server-status' : ServerStatus
+
+  },
+  methods: {
+    clickHere() {
+      this.isOpen
+    }
   }
 }
 </script>

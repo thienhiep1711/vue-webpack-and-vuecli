@@ -91,12 +91,16 @@
           </div>
         </form>
       </div>
+
       <div class="col-sm-5" v-if="isSubmited">
         <div class="alert alert-success" role="alert">
          Submit Successfull
         </div>
       </div>
       <div class="col-sm-5" v-if="!isSubmited">
+        <app-message :backgroundHighlight="{mainColor:'red', secondColor:'blue', delay:'4000'}"></app-message>
+        <app-message :backgroundHighlight="{mainColor:'blue', secondColor:'green', delay:'3000'}"></app-message>
+        <app-message :backgroundHighlight="{mainColor:'green', secondColor:'pink', delay:'2000'}"></app-message>
         <h3>Infomation</h3>
         <ul>
           <li>
@@ -134,6 +138,7 @@
 </template>
 <script>
 import SwitchButton from './SwitchButton.vue';
+import MessageForm from './MessageForm';
   export default {
     data() {
       return {
@@ -153,7 +158,8 @@ import SwitchButton from './SwitchButton.vue';
       }
     },
     components: {
-      "appSwitch": SwitchButton
+      "appSwitch": SwitchButton,
+      "appMessage": MessageForm
     },
     methods: {
       submited() {
